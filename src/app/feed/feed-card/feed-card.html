@@ -1,0 +1,31 @@
+<div class="card mb-3 shadow-sm">
+    <!-- Header -->
+    <div class="card-header bg-white d-flex align-items-center">
+        <img [src]="avatar" alt="avatar" class="rounded-circle me-3" width="48" height="48">
+        <div>
+            <h6 class="mb-0 fw-bold">{{ name }}</h6>
+            <small class="text-muted">
+                {{ date | date:'mediumDate' }} •
+
+                @if (visibility === 'Public') {
+                <i class="bi bi-globe-americas"></i> 
+                } @else {
+                <i class="bi bi-lock"></i>
+                }
+            </small>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="card-body">
+        <p class="card-text mb-0">{{ message }}</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="card-footer bg-white d-flex align-items-center">
+        <button class="btn btn-sm" [ngClass]="liked ? 'btn-danger' : 'btn-outline-secondary'" (click)="toggleLike()">
+            <i class="bi" [ngClass]="liked ? 'bi-heart-fill' : 'bi-heart'"></i>
+            {{ likeCount }}
+        </button>
+    </div>
+</div>

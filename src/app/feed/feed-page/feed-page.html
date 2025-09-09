@@ -1,0 +1,8 @@
+<div class="mt-2">
+    @for (f of feeds; track $index) {
+    <div class="row">
+        <app-feed-card [avatar]="f.auther.profileImagePath" [name]="f.auther.displayName" [date]="f.createdDateTime"
+            [visibility]="f.visibility" [message]="f.message"></app-feed-card>
+    </div>
+    }
+</div>
