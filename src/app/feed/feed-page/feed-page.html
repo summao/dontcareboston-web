@@ -1,8 +1,21 @@
 <div class="mt-2">
-    @for (f of feeds; track $index) {
-    <div class="row">
-        <app-feed-card [avatar]="f.auther.profileImagePath" [name]="f.auther.displayName" [date]="f.createdDateTime"
-            [visibility]="f.visibility" [message]="f.message"></app-feed-card>
-    </div>
+    @if (feeds$ | async; as feeds) {
+        @if (feeds.length === 0) {
+            <div>no feeds available</div>
+        } @else {
+            @for (f of feeds; track f.id) {
+                <div class="row">
+                    <app-feed-card 
+                        [avatar]="f.author.profileImagePath" 
+                        [name]="f.author.displayName" 
+                        [date]="f.createdDateTime" 
+                        [visibility]="f.visibility" 
+                        [message]="f.message">
+                    </app-feed-card>
+                </div>
+            }
+        }
+    } @else {
+        <div>Loading...</div>
     }
 </div>
